@@ -24,6 +24,8 @@
 
         <li><a href="#datasets">Datasets</a></li>
 
+        <li><a href="#distribution">Fertility</a></li>
+
         <li><a href="#cleaning">Cleaning</a></li>
 
         <li><a href="#training">Training</a></li>
@@ -130,65 +132,124 @@ Students, developers, researchers, enterprises and public sector organisations.
 
 <tr>
 
-<td>FineWeb</td>
+<td>Indic Web, News, and Local Content</td>
 
-<td>General Web Knowledge</td>
-
-</tr>
-
-<tr>
-
-<td>Wikipedia</td>
-
-<td>World Knowledge</td>
+<td>Build an India-first worldview and strong regional language fluency in Hindi, Bengali, Marathi, Tamil, Telugu, Gujarati, Kannada, Malayalam, and Sanskrit-adjacent content.</td>
 
 </tr>
 
 <tr>
 
-<td>GitHub</td>
+<td>Open English and Global Scientific Texts</td>
 
-<td>Programming Knowledge</td>
-
-</tr>
-
-<tr>
-
-<td>StackOverflow</td>
-
-<td>Developer Discussions</td>
+<td>Provide general knowledge, scientific reasoning, math, and international context while preserving global quality.</td>
 
 </tr>
 
 <tr>
 
-<td>NCERT</td>
+<td>Code Repositories, Q&A, and Docs</td>
 
-<td>Education</td>
-
-</tr>
-
-<tr>
-
-<td>Indian Government Documents</td>
-
-<td>Policy & Governance</td>
+<td>Train coding ability, debugging patterns, API knowledge, and agentic software workflows across Python, JavaScript, Java, C++, SQL, and shell scripting.</td>
 
 </tr>
 
 <tr>
 
-<td>IndicCorp</td>
+<td>STEM Education Content</td>
 
-<td>Indian Languages</td>
+<td>Ground mathematical reasoning, physics, chemistry, and biology with NCERT, Olympiad, and Indian university course materials.</td>
+
+</tr>
+
+<tr>
+
+<td>Government and Public Domain Data</td>
+
+<td>Align to Indian policy, law, civic services, and cultural norms through authentic public-sector sources.</td>
+
+</tr>
+
+<tr>
+
+<td>Instruction and Agentic Interaction Data</td>
+
+<td>Support task planning, agentic workflows, conversational assistants, Code-Ally behavior, and Indian conversational style.</td>
+
+</tr>
+
+<tr>
+
+<td>RLHF and Alignment Annotations</td>
+
+<td>Refine safety, preference alignment, truthfulness, and India-first helpfulness with human feedback and critique labels.</td>
 
 </tr>
 
 </table>
 
+<p>
+The training data is split to favor Indian languages and worldview without sacrificing strong coding, math, and global reasoning performance. This balance is essential for a 40B model that is both India-first and broadly capable.
+</p>
+
 </section>
 
 
+<section id="distribution">
+
+<h2>Data & Task Fertility</h2>
+
+<div class="card">
+
+<h3>Language Fertility</h3>
+
+<p>Target data balance for Indic fluency and global competency:</p>
+
+<ul>
+<li>Hindi: 25%</li>
+<li>Bengali: 10%</li>
+<li>Marathi: 8%</li>
+<li>Tamil: 8%</li>
+<li>Telugu: 8%</li>
+<li>Gujarati: 6%</li>
+<li>Kannada: 6%</li>
+<li>Malayalam: 6%</li>
+<li>Punjabi: 6%</li>
+<li>Other Indic languages & Sanskrit-adjacent text: 7%</li>
+<li>English and global content: 30%</li>
+</ul>
+
+<p>This distribution gives strong regional Indic coverage while retaining robust English and global scientific content.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Task Fertility</h3>
+
+<ul>
+<li>Coding & Development: 30%</li>
+<li>Science & Math Reasoning: 20%</li>
+<li>Indian Knowledge & Civic Content: 20%</li>
+<li>Agentic / Instructional Tasks: 20%</li>
+<li>Safety & Alignment Signals: 10%</li>
+</ul>
+
+<p>These weights prioritize coding and agentic strength while keeping strong academic and localisation capability.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Tokenizer Design</h3>
+
+<p>Recommended token vocabulary size: 120,000.</p>
+
+<p>Rationale: This size supports Indic scripts, code tokens, mixed-language prompt patterns, and STEM notation without excessive token fragmentation.</p>
+
+</div>
+
+</section>
 
 
 <section id="cleaning">
@@ -201,23 +262,27 @@ Students, developers, researchers, enterprises and public sector organisations.
 
 <div>⬇</div>
 
-<div>Language Detection</div>
+<div>Language & Script Classification</div>
 
 <div>⬇</div>
 
-<div>Deduplication</div>
+<div>Deduplication & Similarity Filtering</div>
 
 <div>⬇</div>
 
-<div>Quality Filtering</div>
+<div>Quality / Trustworthiness Filtering</div>
 
 <div>⬇</div>
 
-<div>PII Removal</div>
+<div>PII, Toxicity, Copyright & Safety Filtering</div>
 
 <div>⬇</div>
 
 <div>Benchmark Decontamination</div>
+
+<div>⬇</div>
+
+<div>Balanced Sample Selection</div>
 
 <div>⬇</div>
 
@@ -240,21 +305,25 @@ Students, developers, researchers, enterprises and public sector organisations.
 
 <div>⬇</div>
 
-<div>Mid Training</div>
+<div>Mid-training on India-heavy multimodal text</div>
 
 <div>⬇</div>
 
-<div>Supervised Fine Tuning</div>
+<div>Supervised Fine-Tuning on code, Indian QA, and STEM instruction</div>
 
 <div>⬇</div>
 
-<div>Preference Optimization</div>
+<div>Preference Optimization and Safety Tuning</div>
 
 <div>⬇</div>
 
-<div>RLVR</div>
+<div>RLHF / Alignment with Indian-centric human preferences</div>
 
 </div>
+
+<p>
+A 40B model requires: broad unsupervised pretraining, focused mid-training on Indian and coding content, SFT for task alignment, and RLHF to achieve helpful, safe, India-first behavior.
+</p>
 
 </section>
 
@@ -277,45 +346,49 @@ Students, developers, researchers, enterprises and public sector organisations.
 
 <tr>
 
-<td>MMLU</td>
+<td>MMLU, PIQA, BBH</td>
 
-<td>General Knowledge</td>
-
-</tr>
-
-<tr>
-
-<td>HumanEval</td>
-
-<td>Programming</td>
+<td>General reasoning and common-sense understanding.</td>
 
 </tr>
 
 <tr>
 
-<td>GSM8K</td>
+<td>HumanEval, CodeXGLUE, MBPP</td>
 
-<td>Mathematics</td>
-
-</tr>
-
-<tr>
-
-<td>IndicBench</td>
-
-<td>Indian Languages</td>
+<td>Programming performance across multiple languages and problem types.</td>
 
 </tr>
 
 <tr>
 
-<td>GAIA</td>
+<td>GSM8K, MATH, ARC</td>
 
-<td>Agentic Tasks</td>
+<td>Mathematics, science reasoning, and problem-solving accuracy.</td>
+
+</tr>
+
+<tr>
+
+<td>IndicBench, IndicNLP, FLORES</td>
+
+<td>Indian language comprehension, translation, and generative quality.</td>
+
+</tr>
+
+<tr>
+
+<td>GAIA, custom Indian agentic task sets</td>
+
+<td>Agentic planning, task execution, and India-first contextual assistance.</td>
 
 </tr>
 
 </table>
+
+<p>
+Evaluation includes both standard benchmarks and bespoke Indian-context tests to ensure the model is locally relevant, safe, and strong in coding and agentic tasks.
+</p>
 
 </section>
 
